@@ -6,7 +6,7 @@
 /*   By: jupyo <jupyo@student.42gyeongsan.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/29 16:00:23 by jupyo             #+#    #+#             */
-/*   Updated: 2025/07/29 16:12:21 by jupyo            ###   ########.fr       */
+/*   Updated: 2025/07/29 17:21:06 by jupyo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,4 +69,31 @@ void	check_texture(t_game *cub3d, char *file, int face)
 		cub3d->west = ft_strdup(file);
 	else
 		exit_error(cub3d, ERR_XPM_CALL);
+}
+
+void	check_color(t_game *cub3d, char *color, int face)
+{
+	int r;
+	int g;
+	int b;
+
+	if (count_words(color, SPLIT_RGB) != 3)
+		exit_error(cub3d, ERR_COLOR_FMT);
+	cub3d->colors = ft_split2(color, SPLIT_RGB);
+	if (!have_numbers(cub3d->colors[0]) || !have_numbers(cub3d->colors[1])
+		|| !have_numbers(cub3d->colors[2]))
+		exit_error(cub3d, ERR_COLOR_NUM);
+	r = ft_atoi(cub3d->colors[0]);
+	g = ft_atoi(cub3d->colors[1]);
+	b = ft_atoi(cub3d->colors[2]);
+	free_split(cub3d->colors);
+	cub3d->colors = NULL;
+	if (r < 0 || r > 255 || g < 0 || g > 255 || b < 0 || b > 255)
+		exit_error(cub3d, ERR_COLOR_RANG);
+	if (face == FLOOR && cub3d->floor == -1)
+		cub3d->floor = (0 << 24 | r << 16 | g << 8 | b);
+	else if (face == CEILING && cub3d->ceiling == -1)
+		cub3d->ceiling = (0 << 24 | r << 16 | g << 8 | b);
+	else
+		exit_error(cub3d, ERR_COLOR_CALL);
 }
