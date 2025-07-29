@@ -6,7 +6,7 @@
 /*   By: jupyo <jupyo@student.42gyeongsan.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/29 18:58:08 by jupyo             #+#    #+#             */
-/*   Updated: 2025/07/29 22:42:14 by jupyo            ###   ########.fr       */
+/*   Updated: 2025/07/29 22:55:45 by jupyo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ t_vector	mult_vector(t_vector *v, double n)
 {
 	t_vector	new;
 
-	new.x = v->x *n;
-	new.y = v->y *n;
+	new.x = v->x * n;
+	new.y = v->y * n;
 	return (new);
 }
 

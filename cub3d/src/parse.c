@@ -6,7 +6,7 @@
 /*   By: jupyo <jupyo@student.42gyeongsan.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/29 16:00:23 by jupyo             #+#    #+#             */
-/*   Updated: 2025/07/29 22:42:19 by jupyo            ###   ########.fr       */
+/*   Updated: 2025/07/29 22:56:50 by jupyo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,9 +73,9 @@ void	check_texture(t_game *cub3d, char *file, int face)
 
 void	check_color(t_game *cub3d, char *color, int face)
 {
-	int r;
-	int g;
-	int b;
+	int	r;
+	int	g;
+	int	b;
 
 	if (count_words(color, SPLIT_RGB) != 3)
 		exit_error(cub3d, ERR_COLOR_FMT);

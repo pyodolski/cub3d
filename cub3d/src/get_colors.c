@@ -6,16 +6,17 @@
 /*   By: jupyo <jupyo@student.42gyeongsan.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/29 22:15:26 by jupyo             #+#    #+#             */
-/*   Updated: 2025/07/29 22:42:16 by jupyo            ###   ########.fr       */
+/*   Updated: 2025/07/29 22:54:36 by jupyo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub.h"
 
-static int	obtain_color_pixel(t_data *img, int point_x, int point_y)
+static int	obtain_color_pixel(t_data *img,
+		int point_x, int point_y)
 {
-	return (*(int *)(img->addr + (point_y * img->line_len + point_x * (img->bpp
-					/ 8))));
+	return (*(int *)(img->addr + (point_y * img->line_len + point_x * \
+					(img->bpp / 8))));
 }
 
 int	obtain_color(t_game *cub3d)
@@ -43,7 +44,7 @@ int	obtain_color(t_game *cub3d)
 
 void	find_out_text_x(t_player *player)
 {
-	double wall;
+	double	wall;
 
 	if (!player->hit_side)
 	{
