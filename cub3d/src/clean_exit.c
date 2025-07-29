@@ -6,7 +6,7 @@
 /*   By: jupyo <jupyo@student.42gyeongsan.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/29 16:00:59 by jupyo             #+#    #+#             */
-/*   Updated: 2025/07/29 17:21:02 by jupyo            ###   ########.fr       */
+/*   Updated: 2025/07/29 19:01:26 by jupyo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,4 +51,41 @@ void	clean_parse(t_game *cub3d)
 		free(cub3d->temp_map);
 	if (cub3d->map)
 		free_split(cub3d->map);
+}
+
+void	invalid_xpm_error(t_game *game, char *msg)
+{
+	if (game->north_img.img)
+		mlx_destroy_image(game->mlx, game->north_img.img);
+	if (game->south_img.img)
+		mlx_destroy_image(game->mlx, game->south_img.img);
+	if (game->east_img.img)
+		mlx_destroy_image(game->mlx, game->east_img.img);
+	if (game->west_img.img)
+		mlx_destroy_image(game->mlx, game->west_img.img);
+	if (game->frame.img)
+		mlx_destroy_image(game->mlx, game->frame.img);
+	mlx_destroy_window(game->mlx, game->window);
+	mlx_destroy_display(game->mlx);
+	free(game->mlx);
+	clean_parse(game);
+	ft_putstr_fd("Error\n", 2);
+	ft_putstr_fd(msg, 2);
+	ft_putstr_fd("\n", 2);
+	exit(EXIT_FAILURE);
+}
+
+int	end_game(t_game *game)
+{
+	mlx_destroy_image(game->mlx, game->frame.img);
+	mlx_destroy_image(game->mlx, game->north_img.img);
+	mlx_destroy_image(game->mlx, game->south_img.img);
+	mlx_destroy_image(game->mlx, game->east_img.img);
+	mlx_destroy_image(game->mlx, game->west_img.img);
+	mlx_destroy_window(game->mlx, game->window);
+	mlx_destroy_display(game->mlx);
+	free(game->mlx);
+	clean_parse(game);
+	printf("\n	Thank you for playing our cub3D maze!\n\n");
+	exit(EXIT_SUCCESS);
 }

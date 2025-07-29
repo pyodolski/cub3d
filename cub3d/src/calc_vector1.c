@@ -1,32 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   set_player.c                                       :+:      :+:    :+:   */
+/*   calc_vector1.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jupyo <jupyo@student.42gyeongsan.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/29 16:58:09 by jupyo             #+#    #+#             */
-/*   Updated: 2025/07/29 19:01:30 by jupyo            ###   ########.fr       */
+/*   Created: 2025/07/29 18:58:08 by jupyo             #+#    #+#             */
+/*   Updated: 2025/07/29 19:01:25 by jupyo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub.h"
 
-void	set_player_position(t_game *cub3d, int i, int j)
+t_vector	add_vector(t_vector *v1, t_vector *v2)
 {
-	while (cub3d->map[++i])
-	{
-		j = -1;
-		while (cub3d->map[i][++j])
-		{
-			if (cub3d->map[i][j] == cub3d->spawn)
-			{
-				cub3d->player.pos.x = j + 0.5;
-				cub3d->player.pos.y = i + 0.5;
-				cub3d->map[i][j] = '0';
-				set_direction(cub3d);
-				return ;
-			}
-		}
-	}
+	t_vector	new;
+
+	new.x = v1->x + v2->x;
+	new.y = v1->y + v2->y;
+	return (new);
+}
+
+t_vector	mult_vector(t_vector *v, double n)
+{
+	t_vector new;
+
+	new.x = v->x *n;
+	new.y = v->y *n;
+	return (new);
 }

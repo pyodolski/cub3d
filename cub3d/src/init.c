@@ -6,7 +6,7 @@
 /*   By: jupyo <jupyo@student.42gyeongsan.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/29 15:52:26 by jupyo             #+#    #+#             */
-/*   Updated: 2025/07/29 17:21:03 by jupyo            ###   ########.fr       */
+/*   Updated: 2025/07/29 19:01:27 by jupyo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,4 +40,31 @@ void	get_screen_size(t_game *cub3d, void *mlx, void *win, int split)
 		cub3d->game_w /= split;
 		cub3d->game_h /= split;
 	}
+}
+
+void	init_textures(t_game *cub3d, int size)
+{
+	cub3d->north_img.img = mlx_xpm_file_to_image(cub3d->mlx, cub3d->north,
+			&size, &size);
+	cub3d->south_img.img = mlx_xpm_file_to_image(cub3d->mlx, cub3d->south,
+			&size, &size);
+	cub3d->east_img.img = mlx_xpm_file_to_image(cub3d->mlx, cub3d->east, &size,
+			&size);
+	cub3d->west_img.img = mlx_xpm_file_to_image(cub3d->mlx, cub3d->west, &size,
+			&size);
+	if (!cub3d->north_img.img || !cub3d->south_img.img || !cub3d->east_img.img
+		|| !cub3d->west_img.img)
+		invalid_xpm_error(cub3d, ERR_TEXTURE);
+	cub3d->north_img.addr = mlx_get_data_addr(cub3d->north_img.img,
+			&cub3d->north_img.bpp, &cub3d->north_img.line_len,
+			&cub3d->north_img.endian);
+	cub3d->south_img.addr = mlx_get_data_addr(cub3d->south_img.img,
+			&cub3d->south_img.bpp, &cub3d->south_img.line_len,
+			&cub3d->south_img.endian);
+	cub3d->east_img.addr = mlx_get_data_addr(cub3d->east_img.img,
+			&cub3d->east_img.bpp, &cub3d->east_img.line_len,
+			&cub3d->east_img.endian);
+	cub3d->west_img.addr = mlx_get_data_addr(cub3d->west_img.img,
+			&cub3d->west_img.bpp, &cub3d->west_img.line_len,
+			&cub3d->west_img.endian);
 }
