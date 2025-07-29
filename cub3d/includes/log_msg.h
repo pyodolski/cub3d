@@ -13,7 +13,6 @@
 #ifndef LOG_MSG_H
 # define LOG_MSG_H
 
-/* COLORS */
 # define DEF "\033[0;39m"
 # define GRAY "\033[0;90m"
 # define RED "\033[0;91m"
@@ -24,7 +23,6 @@
 # define CYAN "\033[0;96m"
 # define WHITE "\033[0;97m"
 
-/* SELECTORS */
 # define NO 0
 # define YES 1
 
@@ -41,12 +39,10 @@
 # define FLOOR 5
 # define CEILING 6
 
-/* CHAR SETS */
 # define SPAWN_CHARS "NSEW"
 # define VALID_CHARS " 01NSEW"
 # define SPLIT_RGB " ,"
 
-/* ERROR MESSAGES */
 # define ERR_ARGS "Invalid number of arguments"
 
 # define ERR_CUB "Invalid input file name"
@@ -74,22 +70,18 @@
 # define ERR_MAP_MSPAWN "Multiple spawn points"
 # define ERR_MAP_NSPAWN "No spawn point"
 
-/* WINDOW SIZE*/
 # define WIN_W 320
 # define WIN_H 200
 # define WIN_TITLE "Cub3D"
 # define TEXTURE_SIZE 64
 
-/* STANDART PLAYER CAM*/
 # define ONE 1
 # define ZERO 0
 # define PLANE 0.66
 
-/* CONTROLS SPEED */
 # define MOV 0.2
 # define ROT 0.1
 
-/* KEYS */
 # define KEY_ESC 65307
 # define LEFT 65361
 # define RIGHT 65363

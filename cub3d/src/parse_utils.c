@@ -6,11 +6,22 @@
 /*   By: jupyo <jupyo@student.42gyeongsan.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/29 16:12:48 by jupyo             #+#    #+#             */
-/*   Updated: 2025/07/29 19:01:28 by jupyo            ###   ########.fr       */
+/*   Updated: 2025/07/29 22:42:18 by jupyo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub.h"
+
+int	have_numbers(char *str)
+{
+	int	i;
+
+	i = -1;
+	while (str[++i])
+		if (!ft_isdigit(str[i]))
+			return (NO);
+	return (YES);
+}
 
 void	check_texture_file(t_game *cub3d, char *file, int fd)
 {
